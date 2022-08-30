@@ -1,0 +1,105 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: none;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+html{
+	--black: #0D114F;
+	--white: #FAFAFA;
+	--red: #E83F5B;
+	--light-blue: #E0ECFF;
+	--blue: #3485FF;
+	--background: #FBFCFF;
+	--overlay: #040911;
+	--icons-details: #A5B0C1;
+
+	--grey-dark: #4D5E77;
+	--grey-blue: #A1B2CD;
+	--grey-medium: #D3D9E2;
+	--grey-light: #E5EAF1;
+
+	/* 1rem = 16px. O rem torna o site responsivo */
+	font-size: 62.5%; /* esse valor da font é o que equivale a 10px. Assim fica mais fácil fazer a conversão para rem. Em vez de dividir por 16 (valor da conversão do pixel para rem), eu divido por 10 */	
+}
+
+body{
+	display: flex;
+	height: 100vh; /* O valor 100vh fala para o layout que o body vai ser sempre pegando onde inicia a tela até onde termina. Considerando que não há rolagem nesse caso */
+	/*width: 100vw - 100vw estou falando que o body é de onde começa a tela na orientação horizontal, até onde termina */
+	/* height = vertical (altura) e width = horizontal (largura) */
+	background: var(--background);
+}	
+
+body, button, input, textarea { /*Quando colocamos o font-size no body, ele não engloba o button, input e textarea */
+	font-size: clamp(14px, 1.6rem, 2vw); /* clamp é o intervalo de tamanho. O primeiro valor é o tamanho mínimo que a fonte pode chegar, o segundo é o padrão da letra e o terceiro é o tamanho máximo que a fonte pode chegar. */
+	
+	font-family: 'Open Sans', sans-serif;	
+}
+
+.content {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.sr-only { /* faz com que o elemento sr/only não seja visivel na tela, apesar de ele existir nela. Screen-only */
+	position: absolute; /* Position absolute faz com que o elemento pare de respeitar os elementos da tela, ele fica por cima de tudo. Assim podemos o movimentar, como se ele não estivesse dentro de uma div e não fosse irmão de nenhum outro elemento. É como se ele fosse único e estive por cima de todo mundo. */
+	height: 1px;
+	width: 1px; /* height de 1px e width de 1px faz com que o elemento seja só um ponto */
+	padding: 0;
+	margin: -1px; /* o elemento some da tela, ele está na tela, mas não aparece pois está no topo */
+	overflow: hidden; /* faz com que não tenha barra de rolagem */
+	clip-path: rect(0, 0, 0, 0); /* faz com que o elemento fique no canto esquerdo superior, combinado com o o margin -1px faz com que ele suma da tela. */
+	white-space: nowrap;
+	border-width: 0;
+}
+
+input, button, .button {
+	border-radius: .8rem;
+	height: 5rem;
+}
+
+button, .button {
+	font-family: 'Poppins';
+	font-weight: 500;
+	line-height: 0; /* Espaçamento do texto */
+
+	display: flex; /* pq todos os botões tem alguma imagem dentro deles */
+	align-items: center; /* alinha na vertical */
+	justify-content: center; /* alinha da horizontal. Deixa o texto e a imagem no meio do botão */
+
+	background: var(--blue);
+	color: var(--white);
+	
+	transition: filter .2s;
+
+	cursor: pointer;
+}
+
+button:hover, .button:hover {
+	filter: brightness(1.2);
+}
+
+button > img,
+.button > img {
+	margin-right: 1rem;
+	width: 2rem;
+}
+
+button.outlined,
+.button.outlined {
+	background: var(--white);
+	color: var(--blue);
+	border:.2rem solid var(--blue);
+}
+
+.content header {
+	width: 80%;
+	margin: 3.5rem auto;
+}
+
+.content header img {
+	width: 16.7rem;
+}
